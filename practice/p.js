@@ -1,188 +1,54 @@
-// 1.number
-// let user_id: number = 334455;
-// 2.boolean
-// let isLoggedIn: boolean = false;
-// 3.any
-// let hero: string;
-// function getHero() {
-//   return "thambi";
+"use strict";
+// OOP in TS
+// abstract class Animal{
+//     constructor(protected name:string){}
+//     abstract makeSound():void       //Abstaction
 // }
-// hero = getHero();
-// 4.functions
-// function add(num: number) {
-//   return num + 2;
+// class Dog extends Animal{       //Inheritance
+//     private breed:string        //Encapsulation
+//     constructor(name:string,breed:string){
+//         super(name)
+//         this.breed=breed
+//     }
+//     makeSound(): void {         //Polymorphism
+//         console.log(`${this.name} barks`);
+//     }
 // }
-// add(2);
-// function getUpper(val: string) {
-//   return val.toUpperCase();
-// }
-// // console.log(getUpper('thambi'))
-// function signUpUser(
-//   name: string,
-//   email: string,
-//   password: string,
-//   is_paid: boolean,
-// ) {
-//   return console.log(
-//     `name is ${name}, email is ${email}, password is ***, is_paid : ${is_paid}`,
-//   );
-// }
-// // signUpUser('thambi','thambi@gmail','123',true)
-// let loginUser = (
-//   name: string,
-//   password: string,
-//   email: string,
-//   is_paid: boolean = true,
-// ) => {
-//   return console.log(
-//     `name is ${name}, email is ${email}, password is ***, is_paid : ${is_paid}`,
-//   );
-// };
-// // loginUser('thambi','thambi@gmail','123',false)
-// function addTwo(num: number): number {
-//   return num + 2;
-//   // return 'thambi'
-// }
-// const getHello = (s: string): string => {
-//   return "thambi";
-// };
-// function consoleError(err: string): void {
-//   console.log(err);
-// }
-// function handleError(err:string):never{
-//     throw new Error(err)
-// }
-// 5.objects
-// const user={name:'thambi',email:'thambi@gmail.com',isActive:true}
-// function createUser({name,isPaid}:{name:string,isPaid:boolean}){}
-// createUser({name:'thambi',isPaid:true})
-// function createCourse({name,price}:{name:string,price:number}):{name:string,price:number}{
-//     return {name:'react',price:1808}
-// }
-// type User={
-//   name:string;
-//   email:string;
-//   is_active:boolean
-// }
-// function createUser(user:User):User{
-//   return {name:'thambi',email:'thambi@gmail.com',is_active:true}
-// }
-// createUser({name:'thambi',email:'thambi@gmail.com',is_active:true})
-// type User = {
-//   readonly _id: string;
-//   name: string;
-//   email: string;
-//   is_active: boolean;
-//   creditCard?: number;
-// };
-// type cardNumber={
-//   cardNumber:string;
-// }
-// type cardDate={
-//   cardDate:string
-// }
-// type cardDetails=cardNumber&cardDate&{cvv:number}
-// 6.Union
-// let score: number | string = 18;
-// type User={name:string,id:number}
-// type Admin={userName:string,id:number}
-// let thambi:User|Admin={userName:'thambi',id:18}
-// thambi={name:'thambi',id:18}
-// function getDbId(id:number|string){
-//   if(typeof id==="string"){
-//     id.toLowerCase()
-//   }else{
-//     id+2
-//   }
-// }
-// getDbId("3")
-// 7.array
-// const data1: number[] = [1, 2, 3, 4];
-// const data2: string[] = ["1", "2", "3", "4"];
-// const data3: number[] | string[] = ["1", "2", "3", "4"]; // either all numbers or all strings
-// const data4: (number | string)[] = [1, 2, "18"]; //strings and numbers
-// 8.tuples
-//array bt with strict type insertion --> tuples
-// let user:[string,number,boolean]
-// user=['thambi',18,true]
-// let rgb:[number,number,number]
-// rgb=[123,241,35]
-// type User=[number,string]
-// let u:User=[18,'t']
-// 9.interface
-// interface User {
-//   readonly _id: number;
-//   email: string;
-//   userId: number;
-//   googleID?: boolean;
-//   // startTrial:()=>string,
-//   startTrial(): string;
-//   getCoupon(name: string): number;
-// }
-// const thambi: User = {
-//   _id: 8,
-//   email: "thambi@gmail",
-//   userId: 18,
-//   startTrial: () => {
-//     return "trial started";
-//   },
-//   getCoupon: (thambi) => {
-//     return 10;
-//   },
-//   gitHub:'thambi//'
-// };
-// interface User{
-//   gitHub:String
-// }
-// interface Admin extends User{
-//   role:'admin'|'ta'|'learner'
-// }
-// const tham:Admin={
-//   role:'admin',
-//   _id:8,
-//   email:'th@gma',
-//   userId:8,
-//   startTrial:()=>{return 'a'},
-//   getCoupon(name) {
-//     return 8
-//   },
-//   gitHub:'ad'
-// }
-// 10.public/private
-// class User {
-//   public email: string; //accessible from outside(default===public)
-//   private name: string;
-//   readonly city: string = "kochi"; //not accessible from outside
-//   constructor(email: string, name: string) {
-//     this.email = email;
-//     this.name = name;
-//   }
-// }
-// const thambi = new User("thambi@gmail", "thambi");
-// thambi.city;
-// 11.getters and setters
-class User {
-    email;
-    name;
-    coursecount = 1;
-    city = 'kochi';
-    constructor(email, name) {
-        this.email = email;
-        this.name = name;
-    }
-    get getAppleEmail() {
-        return `apple email: ${this.email}`;
-    }
-    get courseCount() {
-        return this.coursecount;
-    }
-    set coursecounT(courseNum) {
-        if (courseNum <= 1) {
-            throw new Error("hehehehehehe");
-        }
-        else {
-            this.courseCount = courseNum;
-        }
-    }
+// const d=new Dog('Rex',"pug")    
+// d.makeSound()
+// Array Type Definition(there are two syntax for declaring array types)
+let arr1 = [18, 8, 18]; //1
+let arr2 = [18, 8, 18]; //2
+//variants:
+let names = ['a', 't'];
+let mixed = ['a', 8]; //union type array
+let matrix = [[8, 18], [18, 8]]; //2D array
+let readOnlyArr = [8, 18, 18]; //immutable
+// tuple (fixed length,fixed type array)
+let tuple = ['a', 18];
+let t = ['a']; //optional
+// Object Type Definition(defines the shape of an object - property names and their types)
+//inline syntax(better practice to use interface or type alias)
+let user = { name: 'thambi', age: 18 };
+const u = { _id: 18, name: 'thambi', age: 18 };
+// Union Types(a value can be one of several types, using | )
+let id;
+id = 18;
+id = 'thambi';
+let cor = { x: 18, y: 8 };
+const greet = (name) => `Hello ${name}`;
+const d = { name: 'black', owner: 'thambi', breed: 'lab' };
+//Generic function
+function identity(value) {
+    return value;
 }
-export {};
+identity(['1', 2, 8]);
+//multiple type parameter
+function pair(a, b) {
+    return [a, b];
+}
+pair('age', 25);
+function logLength(item) {
+    return item.length;
+}
+console.log(logLength("hello"));
