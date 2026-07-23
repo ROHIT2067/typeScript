@@ -24,7 +24,7 @@
     type todoPreview=Pick<todo,'id'|'title'>
     //omit => excludes specified properties
     type todoWithoutId=Omit<todo,'id'>
-    //exclude => removes ttpes from a union
+    //exclude => removes types from a union
     type status='active'|'inactive'|'banned'
     type nonBanned=Exclude<status,'banned'>
 
@@ -162,6 +162,7 @@ operate(new Car())
     function logged(constructor:Function){
         console.log(`class created : ${constructor.name}`)
     }
+    @logged
     class User{
         constructor(public name:string){
         }
@@ -229,3 +230,29 @@ new Cat().makeSound()
         return [first,second]
     }
     pair('id',18)
+
+
+//promise
+let promise:Promise<number>=new Promise((res,rej)=>{
+    let suc=true
+    if(suc){
+        res(18)
+    }else{
+        rej('failed')
+    }
+})
+promise.then((val:number)=>console.log(val))
+
+
+
+//Encapsulation: Bundling data and methods together and controlling access to the internal state.
+
+// Absmtraction: Hiding unnecessary implementation details and exposing only essential functionality.
+
+// Inheritance: Creating a new class from an existing class, allowing it to reuse and extend its properties and methods.
+
+// Polymorphism: The same interface or method can have different implementations or behaviors depending on the object/type.
+
+// decorator : special function used to add or modify the behavior of a class, method, property, or parameter without directly changing its original code.
+
+// generics : feature that allows us to write reusable code that works with different types while maintaining type safety.

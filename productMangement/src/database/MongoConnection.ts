@@ -2,7 +2,7 @@ import { MongoClient } from "mongodb";
 
 export class MongoConnection {
 
-private static client:MongoClient;
+private static client:MongoClient;      //encapsulation
 
 static async connect(){
 
